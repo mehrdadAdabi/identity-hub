@@ -17,6 +17,7 @@ pnpm run typeorm migration:generate src/migrations/YourMigrationName -d src/data
 ```
 
 **Example:**
+
 ```bash
 pnpm run typeorm migration:generate src/migrations/add-user-profile -d src/data-source.ts
 ```
@@ -26,6 +27,7 @@ This will create a new migration file like: `src/migrations/[timestamp]-add-user
 ## Migration Lifecycle
 
 ### 1. Update Entity
+
 ```typescript
 // src/auth/entities/user.entity/user.entity.ts
 export class User {
@@ -35,14 +37,17 @@ export class User {
 ```
 
 ### 2. Generate Migration
+
 ```bash
 pnpm run typeorm migration:generate src/migrations/add-new-field -d src/data-source.ts
 ```
 
 ### 3. Review Generated Migration
+
 The migration file will be auto-generated with proper SQL
 
 ### 4. Run Migration
+
 ```bash
 pnpm run typeorm migration:run -d src/data-source.ts
 ```

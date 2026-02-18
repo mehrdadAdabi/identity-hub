@@ -1,4 +1,4 @@
-import { User } from 'src/auth/entities/user.entity/user.entity';
+import { User } from '@auth/entities/user.entity/user.entity';
 import {
   Column,
   Entity,
@@ -17,7 +17,9 @@ export class Student {
   user!: User;
 
   @Column()
-  studentCode!: string;
+  year!: string;
+  // @Column()
+  // studentCode!: string;
 
   @Column({ nullable: true })
   grade!: number;

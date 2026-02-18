@@ -1,6 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { User } from '@auth/entities/user.entity/user.entity';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/auth/entities/user.entity/user.entity';
 import { Repository } from 'typeorm';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { Student } from './entities/student.entities';
@@ -20,7 +24,7 @@ export class StudentService {
       where: { id: dto.userID },
     });
     if (!user) {
-      throw new Error('User not found');
+      throw new NotFoundException('User not found');
     }
 
     const student = await this.studentRepository.find({
@@ -30,12 +34,12 @@ export class StudentService {
     });
 
     if (student.length > 0) {
-      throw new Error('Student already exists');
+      throw new BadRequestException('Student already exists');
     }
 
     const newStudent = this.studentRepository.create({
       user,
-      studentCode: dto.studentCode,
+      // studentCode: dto.studentCode,
       grade: dto.grade,
     });
 

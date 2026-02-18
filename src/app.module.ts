@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -20,13 +21,13 @@ import { AuthModule } from './auth/auth.module';
         database: config.get('DB_NAME'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         migrations: [__dirname + '/migrations/*{.ts,.js}'],
-        migrationsRun: false,
+        migrationsRun: true,
         synchronize: false,
         autoLoadEntities: true,
         logging: true,
       }),
     }),
-
+    DashboardModule,
     AuthModule,
   ],
   controllers: [],
