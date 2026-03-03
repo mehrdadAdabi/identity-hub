@@ -1,3 +1,4 @@
+import { UserRole } from '@auth/types/auth.type';
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsDateString,
@@ -22,6 +23,11 @@ export class RegisterDto {
   @IsNotEmpty()
   @ApiProperty({ example: '09123456789' })
   phoneNumber!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({ example: 'student' })
+  role!: UserRole;
 
   @IsString()
   @IsNotEmpty()

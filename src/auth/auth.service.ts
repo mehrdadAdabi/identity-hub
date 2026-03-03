@@ -31,6 +31,7 @@ export class AuthService {
       email: dto.email,
       password: hashedPassword,
       phoneNumber: dto.phoneNumber,
+      role: dto.role,
       name: dto.name,
       family: dto.family,
       birthDate: dto.birthDate,

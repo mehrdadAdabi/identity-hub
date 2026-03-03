@@ -1,3 +1,4 @@
+import { UserRole } from '@auth/types/auth.type';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('users')
@@ -11,8 +12,8 @@ export class User {
   @Column()
   password!: string;
 
-  @Column({ default: 'student' })
-  role!: string;
+  @Column({ type: 'enum', enum: UserRole, default: UserRole.STUDENT })
+  role!: UserRole;
 
   @Column({ nullable: true, unique: true, default: null })
   nationalCode?: string;

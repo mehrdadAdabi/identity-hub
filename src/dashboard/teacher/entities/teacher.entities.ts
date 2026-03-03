@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('student')
-export class Student {
+@Entity('teacher')
+export class Teacher {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
@@ -16,14 +16,6 @@ export class Student {
   @JoinColumn()
   user!: User;
 
-  @Column()
-  isActive!: boolean;
-
-  // @Column()
-  // year!: string;
-  // @Column()
-  // studentCode!: string;
-
-  // @Column({ nullable: true })
-  // grade!: number;
+  @Column({ nullable: true })
+  description!: string;
 }

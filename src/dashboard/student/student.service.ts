@@ -39,8 +39,7 @@ export class StudentService {
 
     const newStudent = this.studentRepository.create({
       user,
-      // studentCode: dto.studentCode,
-      grade: dto.grade,
+      isActive: dto.isActive,
     });
 
     return await this.studentRepository.save(newStudent);
